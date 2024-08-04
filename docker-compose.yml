@@ -1,0 +1,23 @@
+services:
+  practise_laravel-docker:
+    container_name: practise_laravel-docker
+    build: .
+    volumes:
+      - ./app:/var/www/html
+    ports:
+      - 8008:80
+
+  mysql_database:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: practise_laravel_docker
+    ports:
+      - 3309:3306
+
+  phpmyadmindash:
+    image: phpmyadmin:latest
+    ports:
+      - 9022:80
+    environment:
+      - PMA_ARBITRARY=1
